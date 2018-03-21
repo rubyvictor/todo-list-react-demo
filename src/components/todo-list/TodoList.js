@@ -9,7 +9,6 @@ class TodoList extends Component {
     this.state = {
       todos: todos
     };
-    this.completeHandler = this.completeHandler.bind(this);
   }
 
   render() {
@@ -17,13 +16,20 @@ class TodoList extends Component {
       <div id="todo-list">
         <h1 id="todo-title">{this.props.title}</h1>
         {this.state.todos.map((todo, i) => {
-          return <TodoItem key={i} todo={todo} />;
+          return (
+            <TodoItem
+              key={i}
+              todo={todo}
+              handleClick={this.handleClick.bind(this, i)}
+            />
+          );
         })}
       </div>
     );
   }
 
-  completeHandler() {
+  handleClick() {
+    console.log("clicked");
   }
 }
 

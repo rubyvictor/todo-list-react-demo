@@ -1,11 +1,7 @@
-import React, { Component } from 'react';
+import React from "react";
 
-const TodoItem = (props) =>{
-
-    return (
-        <li>{props.todo.description}
-        </li>
-    )
+const TodoItem = props => {
+  return <li onClick={props.handleClick}>{props.todo.description}</li>;
 };
 
 export default TodoItem;
