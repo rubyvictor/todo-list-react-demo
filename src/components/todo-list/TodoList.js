@@ -8,19 +8,29 @@ class TodoList extends Component {
     super();
     this.state = {
       todos: todos,
-      newTodo: {description:"",isCompleted: false}
+      newTodo: { description: "", isCompleted: false }
     };
-
-    
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-handleChange(event) {
-  this.setState({newTodo: {description: event.target.value,isCompleted: false}})
-}
+  handleChange(event) {
+    this.setState({
+      newTodo: { description: event.target.value, isCompleted: false }
+    });
+  }
 
-handleSubmit(event){
-  event.preventDefault();
-}
+  handleSubmit(event) {
+    event.preventDefault();
+
+    const newTodoTobeUpdated = this.state.todos.concat(this.state.newTodo);
+    this.setState({
+      todos: newTodoTobeUpdated,
+      newTodo: { description: "",isCompleted: false}
+    });
+
+  }
+
   render() {
     return (
       <div id="todo-list">
@@ -34,6 +44,17 @@ handleSubmit(event){
             />
           );
         })}
+        <form onSubmit={this.handleSubmit}>
+          <label>
+            Add:
+            <input
+              type="text"
+              value={this.state.newTodo.description}
+              onChange={this.handleChange}
+            />
+          </label>
+          <input type="submit" value="Submit" />
+        </form>
       </div>
     );
   }
@@ -46,8 +67,7 @@ handleSubmit(event){
 
     this.setState({
       todos: todoCopy
-    })
-
+    });
   }
 }
 
