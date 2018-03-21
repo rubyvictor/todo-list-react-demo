@@ -7,10 +7,20 @@ class TodoList extends Component {
   constructor() {
     super();
     this.state = {
-      todos: todos
+      todos: todos,
+      newTodo: {description:"",isCompleted: false}
     };
+
+    
   }
 
+handleChange(event) {
+  this.setState({newTodo: {description: event.target.value,isCompleted: false}})
+}
+
+handleSubmit(event){
+  event.preventDefault();
+}
   render() {
     return (
       <div id="todo-list">
@@ -31,7 +41,7 @@ class TodoList extends Component {
   handleClick(todoIndex) {
     const todoCopy = [...this.state.todos];
     const todoTobeUpdated = todoCopy[todoIndex];
-    todoTobeUpdated["isCompleted"] = true;
+    todoTobeUpdated["isCompleted"] = !todoTobeUpdated["isCompleted"];
     console.log(todos);
 
     this.setState({
