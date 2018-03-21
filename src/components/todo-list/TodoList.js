@@ -28,8 +28,16 @@ class TodoList extends Component {
     );
   }
 
-  handleClick() {
-    console.log("clicked");
+  handleClick(todoIndex) {
+    const todoCopy = [...this.state.todos];
+    const todoTobeUpdated = todoCopy[todoIndex];
+    todoTobeUpdated["isCompleted"] = true;
+    console.log(todos);
+
+    this.setState({
+      todos: todoCopy
+    })
+
   }
 }
 
