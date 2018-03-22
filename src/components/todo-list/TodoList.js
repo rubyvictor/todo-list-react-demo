@@ -10,8 +10,6 @@ class TodoList extends Component {
       todos: todos,
       newTodo: { description: "", isCompleted: false }
     };
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleChange(event) {
@@ -20,13 +18,11 @@ class TodoList extends Component {
     });
   }
 
-  handleSubmit(event) {
-    event.preventDefault();
-
-    const newTodoTobeUpdated = this.state.todos.concat(this.state.newTodo);
+  handleSubmit(newTodo) {
+    // console.log(newTodo)
+    const updatedTodos = this.state.todos.concat(newTodo);
     this.setState({
-      todos: newTodoTobeUpdated,
-      newTodo: { description: "", isCompleted: false }
+      todos: updatedTodos
     });
   }
 
@@ -44,10 +40,9 @@ class TodoList extends Component {
           );
         })}
         <TodoForm
-          onSubmit={this.handleSubmit.bind(this)}
-          type="text"
+          handleSubmit={this.handleSubmit.bind(this)}
           value={this.state.newTodo.description}
-          onChange={this.handleChange.bind(this)}
+          handleChange={this.handleChange.bind(this)}
         />
       </div>
     );
@@ -57,7 +52,6 @@ class TodoList extends Component {
     const todoCopy = [...this.state.todos];
     const todoTobeUpdated = todoCopy[todoIndex];
     todoTobeUpdated["isCompleted"] = !todoTobeUpdated["isCompleted"];
-    console.log(todos);
 
     this.setState({
       todos: todoCopy
