@@ -27,7 +27,7 @@ class TodoForm extends Component {
       <form onSubmit={this.handleSubmit.bind(this)}>
         <label>
           Add:
-          <input
+          <input id="text"
             value={this.state.description}
             onChange={this.handleChange.bind(this)}
           />

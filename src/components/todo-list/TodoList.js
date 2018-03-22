@@ -38,7 +38,7 @@ class TodoList extends Component {
             />
           );
         })}
-        <TodoForm
+        <TodoForm id="text"
           handleSubmit={this.handleSubmit.bind(this)}
           value={this.state.newTodo.description}
           handleChange={this.handleChange.bind(this)}
