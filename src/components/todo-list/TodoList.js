@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { todos } from "../../utils/seedData";
 import "./TodoList.css";
 import TodoItem from "../Todo-item/TodoItem";
-
+import TodoForm from "../Form/TodoForm";
 class TodoList extends Component {
   constructor() {
     super();
@@ -26,9 +26,8 @@ class TodoList extends Component {
     const newTodoTobeUpdated = this.state.todos.concat(this.state.newTodo);
     this.setState({
       todos: newTodoTobeUpdated,
-      newTodo: { description: "",isCompleted: false}
+      newTodo: { description: "", isCompleted: false }
     });
-
   }
 
   render() {
@@ -44,17 +43,12 @@ class TodoList extends Component {
             />
           );
         })}
-        <form onSubmit={this.handleSubmit}>
-          <label>
-            Add:
-            <input
-              type="text"
-              value={this.state.newTodo.description}
-              onChange={this.handleChange}
-            />
-          </label>
-          <input type="submit" value="Submit" />
-        </form>
+        <TodoForm
+          onSubmit={this.handleSubmit.bind(this)}
+          type="text"
+          value={this.state.newTodo.description}
+          onChange={this.handleChange.bind(this)}
+        />
       </div>
     );
   }
