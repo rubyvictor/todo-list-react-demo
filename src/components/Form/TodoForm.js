@@ -19,10 +19,7 @@ class TodoForm extends Component {
     console.log(this.state.newTodo);
 
     this.props.handleSubmit(this.state.newTodo);
-
-    this.setState({
-      newTodo: { description: "", isCompleted: false }
-    });
+    this.setState({ newTodo: { description: "", isCompleted: false } });
   }
 
   render() {

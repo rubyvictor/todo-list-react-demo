@@ -19,8 +19,7 @@ class TodoList extends Component {
   }
 
   handleSubmit(newTodo) {
-    // console.log(newTodo)
-    const updatedTodos = this.state.todos.concat(newTodo);
+    const updatedTodos = [...this.state.todos, newTodo];
     this.setState({
       todos: updatedTodos
     });
