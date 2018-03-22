@@ -11,12 +11,14 @@ describe("TodoItem", () => {
       <TodoItem
         className="done"
         todo={{ description: "buy drinks", isCompleted: false }}
+        handleClick={mockHandler}
       />
     );
-    console.log(wrapper.find("li").props())
-    console.log(wrapper.find("li").props().children);
-    expect(wrapper.find("li")).toHaveLength(1);
-    expect(wrapper.find("li").props().children).toEqual("buy drinks")
     
+    expect(wrapper.find("li")).toHaveLength(1);
+    expect(wrapper.find("li").props().children).toEqual("buy drinks");
+
+    wrapper.find("li").simulate("click", { preventDefault() {} });
+    expect(mockHandler).toBeCalled();
   });
 });
