@@ -17,12 +17,16 @@ describe("TodoList", () => {
   });
 });
 
-describe("TodoList tests eventhandlers", () => {
-  it("input field is able to call handleChange", () => {
+describe("TodoList test for eventhandler", () => {
+  it("should add a new todo when handleSubmit is called", () => {
+      const newTodo = {description: "new new",isCompleted: false};
     const wrapper = shallow(<TodoList />);
-    console.log(wrapper.find("#text").debug());
 
-    wrapper.find("#text").simulate("change", { target: { value: "a" } });
-    expect(wrapper.state().value).toEqual("a");
+    console.log(wrapper.state().todos.length)
+    const expectedLength = wrapper.state().todos.length + 1;
+
+    wrapper.find("TodoForm").props().handleSubmit(newTodo);
+    expect(wrapper.state().todos).toHaveLength(expectedLength);
+
   });
 });
