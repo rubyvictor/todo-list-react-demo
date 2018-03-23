@@ -17,8 +17,8 @@ describe("TodoList", () => {
   });
 });
 
-describe("TodoList tests for eventHandlers", () => {
-  it.skip("Function test: input field is able to call handleChange", () => {
+describe("TodoList tests eventhandlers", () => {
+  it("input field is able to call handleChange", () => {
     const wrapper = shallow(<TodoList />);
     console.log(wrapper.find("#text").debug());
 
