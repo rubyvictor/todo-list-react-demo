@@ -11,12 +11,6 @@ class TodoList extends Component {
     };
   }
 
-  handleChange(event) {
-    this.setState({
-      newTodo: { description: event.target.value, isCompleted: false }
-    });
-  }
-
   handleSubmit(newTodo) {
     const updatedTodos = [...this.state.todos, newTodo];
     this.setState({
@@ -37,11 +31,7 @@ class TodoList extends Component {
             />
           );
         })}
-        <TodoForm
-          id="text"
-          handleSubmit={this.handleSubmit.bind(this)}
-          handleChange={this.handleChange.bind(this)}
-        />
+        <TodoForm id="text" handleSubmit={this.handleSubmit.bind(this)} />
       </div>
     );
   }
