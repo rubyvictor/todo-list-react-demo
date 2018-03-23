@@ -7,8 +7,7 @@ class TodoList extends Component {
   constructor() {
     super();
     this.state = {
-      todos: todos,
-      newTodo: { description: "", isCompleted: false }
+      todos: todos
     };
   }
 
@@ -38,9 +37,9 @@ class TodoList extends Component {
             />
           );
         })}
-        <TodoForm id="text"
+        <TodoForm
+          id="text"
           handleSubmit={this.handleSubmit.bind(this)}
-          value={this.state.newTodo.description}
           handleChange={this.handleChange.bind(this)}
         />
       </div>
