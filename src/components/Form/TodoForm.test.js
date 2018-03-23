@@ -14,3 +14,13 @@ describe("TodoForm tests for structure", () => {
     expect(wrapper.find("input")).toHaveLength(2);
   });
 });
+
+describe('TodoForm tests for eventhandlers', () => {
+  it('should be able to call handleChange', () => {
+    const wrapper = shallow(<TodoForm />);
+
+    wrapper.find("#text").simulate('change',{ target: {value:"a"}});
+    console.log(wrapper.state().newTodo)
+    expect(wrapper.state().newTodo.description).toEqual("a");
+  });
+});
