@@ -1,20 +1,22 @@
 import React, { Component } from "react";
-import { todos } from "../../utils/seedData";
+import { toDos } from "../../utils/seedData";
 import "./TodoList.css";
 import TodoItem from "../Todo-item/TodoItem";
 import TodoForm from "../Form/TodoForm";
+import PropTypes from "prop-types";
+
 class TodoList extends Component {
   constructor() {
     super();
     this.state = {
-      todos: todos
+      toDos: toDos
     };
   }
 
   handleSubmit(newTodo) {
-    const updatedTodos = [...this.state.todos, newTodo];
+    const updatedToDos = [...this.state.toDos, newTodo];
     this.setState({
-      todos: updatedTodos
+      toDos: updatedToDos
     });
   }
 
@@ -22,7 +24,7 @@ class TodoList extends Component {
     return (
       <div id="todo-list">
         <h1 id="todo-title">{this.props.title}</h1>
-        {this.state.todos.map((todo, i) => {
+        {this.state.toDos.map((todo, i) => {
           return (
             <TodoItem
               key={i}
@@ -37,14 +39,18 @@ class TodoList extends Component {
   }
 
   handleClick(todoIndex) {
-    const todoCopy = [...this.state.todos];
-    const todoTobeUpdated = todoCopy[todoIndex];
-    todoTobeUpdated["isCompleted"] = !todoTobeUpdated["isCompleted"];
+    const todoCopy = [...this.state.toDos];
+    const todoToBeUpdated = todoCopy[todoIndex];
+    todoToBeUpdated["isCompleted"] = !todoToBeUpdated["isCompleted"];
 
     this.setState({
-      todos: todoCopy
+      toDos: todoCopy
     });
   }
 }
+
+TodoList.defaultProps = {
+  title: "Some awesome To Do List"
+};
 
 export default TodoList;

@@ -17,16 +17,16 @@ describe("TodoList", () => {
   });
 });
 
-describe("TodoList test for eventhandler", () => {
+describe("TodoList test for eventHandler", () => {
   it("should add a new todo when handleSubmit is called", () => {
       const newTodo = {description: "new new",isCompleted: false};
     const wrapper = shallow(<TodoList />);
 
-    console.log(wrapper.state().todos.length)
-    const expectedLength = wrapper.state().todos.length + 1;
+    console.log(wrapper.state().toDos.length)
+    const expectedLength = wrapper.state().toDos.length + 1;
 
     wrapper.find("TodoForm").props().handleSubmit(newTodo);
-    expect(wrapper.state().todos).toHaveLength(expectedLength);
+    expect(wrapper.state().toDos).toHaveLength(expectedLength);
 
   });
 });

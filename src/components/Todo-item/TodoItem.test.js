@@ -11,6 +11,7 @@ describe("TodoItem", () => {
       <TodoItem
         className="done"
         todo={{ description: "buy drinks", isCompleted: false }}
+        handleSubmit={()=>{}}
         handleClick={mockHandler}
       />
     );

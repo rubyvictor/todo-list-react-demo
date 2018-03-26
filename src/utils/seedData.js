@@ -1,4 +1,4 @@
-export const todos = [
+export const toDos = [
   { description: "buy milk", isCompleted: false },
   { description: "drink juice", isCompleted: false },
   { description: "eat lunch", isCompleted: false },
