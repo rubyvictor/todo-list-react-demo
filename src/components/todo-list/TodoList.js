@@ -3,7 +3,6 @@ import { toDos } from "../../utils/seedData";
 import "./TodoList.css";
 import TodoItem from "../Todo-item/TodoItem";
 import TodoForm from "../Form/TodoForm";
-import PropTypes from "prop-types";
 
 class TodoList extends Component {
   constructor() {
